@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ organization.name }}</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="text-center">Financial Organization Details</h2>
+      <div class="card mt-4">
+        <div class="card-header">
+          <h4>{{ organization.name }}</h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <tr>
+              <th>First Director</th>
+              <td>{{ organization.first_director }}</td>
+            </tr>
+            <tr>
+              <th>Board of Directors</th>
+              <td>{{ organization.board_of_directors }}</td>
+            </tr>
+            <tr>
+              <th>Chairman of the Board</th>
+              <td>{{ organization.chairman_of_the_board }}</td>
+            </tr>
+            <tr>
+              <th>Board Members</th>
+              <td>{{ organization.board_members }}</td>
+            </tr>
+            <tr>
+              <th>Other Executives</th>
+              <td>{{ organization.other_executives }}</td>
+            </tr>
+            <tr>
+              <th>Director</th>
+              <td>{{ organization.director }}</td>
+            </tr>
+            <tr>
+              <th>Chief Accountant</th>
+              <td>{{ organization.chief_accountant }}</td>
+            </tr>
+            <tr>
+              <th>BIN</th>
+              <td>{{ organization.bin }}</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>{{ organization.address }}</td>
+            </tr>
+            <tr>
+              <th>Phone Number</th>
+              <td>{{ organization.phone_number }}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>
+                <a href="mailto:{{ organization.email }}"
+                  >{{ organization.email }}</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <th>Website</th>
+              <td>
+                <a href="{{ organization.website }}" target="_blank"
+                  >{{ organization.website }}</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <th>License</th>
+              <td>{{ organization.license }}</td>
+            </tr>
+            <tr>
+              <th>Branches</th>
+              <td>{{ organization.branches }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="news-ribbon mt-5">
+        <h1>News</h1>
+        {% for article in news %}
+        <div class="news-item">
+          <h3>{{ article.title }}</h3>
+          <hr />
+          <b>Published</b>: {{ article.published_date }}
+          <br />
+          {{article.content | truncatewords:100}}
+          <a href="{% url 'news_detail' article.id %}">Read more</a>
+        </div>
+        <br />
+        {% empty %}
+        <p>No news available at the moment.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
