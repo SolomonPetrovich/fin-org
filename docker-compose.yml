@@ -26,7 +26,7 @@ services:
     build:
       context: .
     command: >
-      sh -c "python manage.py makemigrations && python manage.py migrate &&   python manage.py import_finorgs && gunicorn --bind 0.0.0.0:8000 core.wsgi:application"
+      sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic && python manage.py import_finorgs && gunicorn --bind 0.0.0.0:8000 core.wsgi:application"
     volumes:
       - .:/app
     ports:
